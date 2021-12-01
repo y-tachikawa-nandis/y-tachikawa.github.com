@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- iosのアイコン設定 -->
+    <link rel="apple-touch-icon" href="images/icon.jpg" sizes="192x192"/>
+
+    <!-- iosのスプラッシュ画面設定 -->
+    <link rel="apple-touch-startup-image" href="images/launch-640x1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-750x1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-1242x2208.jpg" media="(device-width: 414x) and (device-height: 736x) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-828x1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="images/launch-1242x2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+
+    <!-- PWAのmanifest.json -->
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="countDisplay" class="count-display">0</div>
+        <div class="btns">
+            <button id="countDown" class="btn">減らす</button>
+            <button id="countUp" class="btn">増やす</button>
+        </div>
+        <button id="countReset"  class="reset">リセット</button>
+    </div>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('js/serviceworker.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    }    
+    </script>
+    <script src="js/count.js"></script>
+</body>
+</html>
