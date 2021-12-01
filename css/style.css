@@ -46,6 +46,18 @@ html {
   font-weight: bold;
   cursor: pointer;
 }
+.reset {
+  display: inline-block;
+  margin: 30px 0 0;
+  padding: 15px 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ee0000;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
 .time span {
   display: inline-block;
   width: 50px;
