@@ -31,15 +31,14 @@
         <button id="countReset"  class="reset">リセット</button>
     </div>
 
-    <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('js/serviceworker.js').then(function(registration) {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }).catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-        });
-    }    
-    </script>
-    <script src="js/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg);
+      });
+}
+</script>
+    <script src="count.js"></script>
 </body>
 </html>
