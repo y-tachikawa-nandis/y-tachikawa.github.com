@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAP10</title>
+<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<!-- ウェブアプリマニフェストの読み込み -->
+<link rel="manifest" href="manifest.json">
+<!-- ServiceWorkerの登録 -->
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg);
+      });
+}
+</script>
+<body>
+
+<section class="container">
+  <h1 class="title">10秒で何回タップできるか</h1>
+  <button id="js-tapBtn" class="btn-tap" disabled>
+    <span id="js-count"></span><br>タップ!!
+  </button>
+  <div class="time">残り時間 <span id="js-time"></span> 秒</div>
+  <button id="js-startBtn" class="btn">START</button>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

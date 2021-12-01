@@ -1,0 +1,39 @@
+<head>
+    <link rel="manifest" href="/manifest.json">
+    <!-- 文字コード設定&モバイル対応化 -->
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script>
+        // ServiceWorkerを読み込ませる
+        window.addEventListener('load', function () {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function (registration) {
+                        return registration.pushManager.getSubscription().then(function (subscription) {
+                            console.log("subscription", subscription)
+                            if (subscription) {
+                                return subscription
+                            }
+                            return registration.pushManager.subscribe({
+                                userVisibleOnly: true
+                            })
+                        })
+                    }).then(function (subscription) {
+                        var endpoint = subscription.endpoint
+                        console.log("pushManager endpoint:", endpoint)
+                    }).catch(function (error) {
+                        console.log("serviceWorker error:", error)
+                    })
+            }
+        })
+    </script>
+</head>
+<body>
+    PWAのオフライン表示テスト（フロントページ）
+    <br>
+    <a href="https://hoge.com/index2.html">2ページ目へ</a>
+    <!-- ページの遷移もできます。その際、遷移先ページにもServiceWorkerを読み込ませないとうまく機能しない場合があります -->
+    <br>
+    <img src="/icon.png">
+</body>
+</html>
